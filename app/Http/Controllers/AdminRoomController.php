@@ -14,7 +14,7 @@ class AdminRoomController extends Controller
         $rooms = ComputerRoom::all();
         $reservations = RoomReservation::with(['user', 'computerRoom'])
             ->whereIn('status', ['pending', 'active'])
-            ->orderByRaw("FIELD(status, 'pending') DESC")
+            ->orderByRaw("CASE WHEN status = 'pending' THEN 0 ELSE 1 END")
             ->orderBy('start_date', 'asc')
             ->get();
         $history = RoomReservation::with(['user', 'computerRoom'])

@@ -12,7 +12,7 @@ class AdminController extends Controller
     {
         $activeLoans = Loan::with(['user', 'item'])
                            ->whereIn('status', ['pending', 'active'])
-                           ->orderByRaw("FIELD(status, 'pending') DESC")
+                           ->orderByRaw("CASE WHEN status = 'pending' THEN 0 ELSE 1 END")
                            ->orderBy('created_at', 'asc') 
                            ->get();
 
