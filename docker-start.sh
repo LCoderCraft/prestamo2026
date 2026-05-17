@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-php artisan key:generate --force
 php artisan migrate --force --seed
 php artisan config:cache
 php artisan route:cache
