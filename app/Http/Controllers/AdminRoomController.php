@@ -52,7 +52,7 @@ class AdminRoomController extends Controller
             $reservation->user->notify(new RoomReservationStatusChanged($reservation));
             if ($reservation->user->email) {
                 try {
-                    Mail::to($reservation->user->email)->send(new RoomReservationConfirmation($reservation));
+                    Mail::to($reservation->user->email)->queue(new RoomReservationConfirmation($reservation));
                 } catch (\Exception $e) {}
             }
         }

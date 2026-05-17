@@ -85,7 +85,7 @@ public function store(Request $request)
             
             if ($loan->user->email) {
                 try {
-                    Mail::to($loan->user->email)->send(new LoanReturned($loan, $observation));
+                    Mail::to($loan->user->email)->queue(new LoanReturned($loan, $observation));
                 } catch (\Exception $e) {}
             }
         }
@@ -97,7 +97,7 @@ public function store(Request $request)
             
             if ($loan->user->email) {
                 try { 
-                    Mail::to($loan->user->email)->send(new LoanStatusUpdate($loan)); 
+                    Mail::to($loan->user->email)->queue(new LoanStatusUpdate($loan)); 
                 } catch (\Exception $e) {}
             }
         }
