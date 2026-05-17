@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "SomeRandomString" ]; then
-  php artisan key:generate --force
+  export APP_KEY=$(php artisan key:generate --show --force)
 fi
 
 php artisan migrate --force
