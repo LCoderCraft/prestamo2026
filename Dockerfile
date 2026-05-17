@@ -30,7 +30,8 @@ RUN touch /var/www/html/.env \
     && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 storage bootstrap/cache /var/www/html/.env \
     && composer install --no-dev --optimize-autoloader --no-interaction \
-    && php artisan storage:link --force
+    && php artisan storage:link --force \
+    && sed -i 's/^clear_env.*/clear_env = no/' /usr/local/etc/php-fpm.d/www.conf
 
 COPY deploy.conf /etc/nginx/sites-enabled/default
 
