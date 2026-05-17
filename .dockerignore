@@ -1,0 +1,13 @@
+.git
+.gitignore
+.env
+node_modules
+vendor
+.gitattributes
+.editorconfig
+*.md
+*.log
+start.sh
+render.yaml
+README.md
+
