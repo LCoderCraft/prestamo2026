@@ -26,8 +26,9 @@ WORKDIR /var/www/html
 
 COPY --from=node-builder /app/public/build /var/www/html/public/build
 
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 storage bootstrap/cache \
+RUN touch /var/www/html/.env \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 storage bootstrap/cache /var/www/html/.env \
     && composer install --no-dev --optimize-autoloader --no-interaction \
     && php artisan storage:link --force
 

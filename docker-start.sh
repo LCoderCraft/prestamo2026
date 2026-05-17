@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "SomeRandomString" ]; then
-  export APP_KEY=$(php artisan key:generate --show --force)
-fi
-
+php artisan key:generate --force
 php artisan migrate --force --seed
 php artisan config:cache
 php artisan route:cache

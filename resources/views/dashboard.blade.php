@@ -525,9 +525,10 @@
                 <div class="p-6 space-y-4 text-sm">
                     <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
                         <h4 class="font-bold text-indigo-800 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> Ubicación</h4>
+                        <p class="text-gray-800 font-semibold">Edificio Central</p>
                         <p class="text-gray-700">Facultad de Ingeniería Mochis</p>
-                        <p class="text-gray-600 text-xs">Centro de Cómputo, Edificio Principal, Planta Baja</p>
-                        <p class="text-gray-600 text-xs mt-1">Por la entrada principal, frente a la biblioteca.</p>
+                        <p class="text-gray-600 text-xs">Centro de Cómputo, Planta Baja</p>
+                        <p class="text-gray-600 text-xs mt-1">Acceso principal, frente a la biblioteca.</p>
                     </div>
                     <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-100">
                         <h4 class="font-bold text-emerald-800 mb-2"><i class="fa-solid fa-phone mr-1"></i> Contacto</h4>
