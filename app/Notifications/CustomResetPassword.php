@@ -3,11 +3,10 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class CustomResetPassword extends Notification implements ShouldQueue
+class CustomResetPassword extends Notification
 {
     use Queueable;
 
