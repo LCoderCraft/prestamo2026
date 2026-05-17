@@ -38,7 +38,7 @@ services:
       - key: QUEUE_CONNECTION
         value: sync
       - key: SESSION_DRIVER
-        value: database
+        value: file
       - key: MAIL_MAILER
         value: smtp
       - key: MAIL_HOST
@@ -49,7 +49,7 @@ services:
         value: prestamodematerialesuas@gmail.com
       - key: MAIL_PASSWORD
         sync: false
-      - key: MAIL_ENCRYPTION
+      - key: MAIL_SCHEME
         value: tls
       - key: MAIL_FROM_ADDRESS
         value: prestamodematerialesuas@gmail.com
