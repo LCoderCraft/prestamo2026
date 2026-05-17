@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
 
@@ -42,7 +43,16 @@ class PasswordResetLinkController extends Controller
             'created_at' => now(),
         ]);
 
-        $user->notify(new \App\Notifications\CustomResetPassword($code));
+        try {
+            $user->notify(new \App\Notifications\CustomResetPassword($code));
+        } catch (\Throwable $e) {
+            Log::error('Error al enviar correo de recuperacion: ' . $e->getMessage(), [
+                'email' => $request->email,
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return back()->withInput($request->only('email'))
+                ->withErrors(['email' => 'No se pudo enviar el correo. Verifica tu conexion o intenta mas tarde.']);
+        }
 
         return redirect()->route('password.verify.code', ['email' => $request->email])
             ->with('success', 'Te enviamos un codigo de 6 digitos a tu correo.');
