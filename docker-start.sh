@@ -5,6 +5,8 @@ if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "SomeRandomString" ]; then
   export APP_KEY=$(php artisan key:generate --show)
 fi
 
+export SESSION_DRIVER=file
+
 php artisan migrate --force --seed
 php artisan config:cache
 php artisan route:cache
